@@ -8,8 +8,9 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
-    'name' => '百道生活',
+    'name' => '百道',
     'basePath' => dirname(__DIR__),
+    'defaultRoute' => 'country',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],

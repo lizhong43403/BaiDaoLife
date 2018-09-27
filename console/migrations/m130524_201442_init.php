@@ -22,6 +22,11 @@ class m130524_201442_init extends Migration {
             'created_at' => $this->integer()->notNull()->comment('创建时间'),
             'updated_at' => $this->integer()->notNull()->comment('更新时间'),
         ], $tableOptions);
+
+        $this->batchInsert('{{%user}}', ['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'status', 'created_at', 'updated_at'], [
+            ['zhongjun', Yii::$app->security->generateRandomString(), Yii::$app->security->generatePasswordHash('123456'), Yii::$app->security->generateRandomString() . '_' . time(), 'lizhong43403@163.com', 10, time(), 0],
+            ['maxiao', Yii::$app->security->generateRandomString(), Yii::$app->security->generatePasswordHash('123456'), Yii::$app->security->generateRandomString() . '_' . time(), 'hellomybabe@aliyun.com', 10, time(), 0]
+        ]);
     }
 
     public function down() {

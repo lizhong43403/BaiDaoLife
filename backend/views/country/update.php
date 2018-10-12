@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $model backend\models\Country */
 
 $this->title = 'Update Country: {nameAttribute}';
-$this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '国家', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '修改';
 ?>
 <div class="country-update">
 

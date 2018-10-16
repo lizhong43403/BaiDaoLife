@@ -23,6 +23,8 @@ class m130524_201442_init extends Migration {
             'updated_at' => $this->integer()->notNull()->comment('更新时间'),
         ], $tableOptions);
 
+        $this->addCommentOnTable('{{%user}}', '用户表');
+
         $this->batchInsert('{{%user}}', ['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'status', 'created_at', 'updated_at'], [
             ['李中俊', Yii::$app->security->generateRandomString(), Yii::$app->security->generatePasswordHash('123456'), Yii::$app->security->generateRandomString() . '_' . time(), 'lizhong43403@163.com', 10, time(), 0],
             ['马潇', Yii::$app->security->generateRandomString(), Yii::$app->security->generatePasswordHash('123456'), Yii::$app->security->generateRandomString() . '_' . time(), 'hellomybabe@aliyun.com', 10, time(), 0]

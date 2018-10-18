@@ -18,7 +18,7 @@ class m130524_201442_init extends Migration {
             'password_reset_token' => $this->string()->unique()->comment('用户密码重置令牌'),
             'email' => $this->string()->notNull()->unique()->comment('系统用户邮箱'),
 
-            'status' => $this->smallInteger()->notNull()->defaultValue(10)->comment('系统用户状态 0已删除、10有效的'),
+            'status' => $this->smallInteger()->notNull()->defaultValue(10)->comment('系统用户状态 0已注销、10有效的'),
             'created_at' => $this->integer()->notNull()->comment('创建时间'),
             'updated_at' => $this->integer()->notNull()->comment('更新时间'),
         ], $tableOptions);

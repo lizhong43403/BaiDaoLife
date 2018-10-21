@@ -9,9 +9,9 @@ class m181018_100914_projects extends Migration {
     /**
      * 项目信息表
      */
-    public function safeUp() {
+    public function safeUp () {
         $tableOptions = null;
-        if($this->db->driverName === 'mysql') {
+        if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
@@ -20,6 +20,7 @@ class m181018_100914_projects extends Migration {
             'id' => $this->primaryKey()->comment('项目ID'),
             'name' => $this->string(64)->unique()->notNull()->comment('项目名称'),
             'description' => $this->string()->defaultValue('')->comment('项目描述'),
+            'app_number' => $this->smallInteger()->defaultValue(0)->comment('项目下应用数'),
             'created_at' => $this->integer()->notNull()->comment('添加时间'),
             'updated_at' => $this->integer()->notNull()->defaultValue(0)->comment('更新时间'),
         ], $tableOptions);
@@ -32,7 +33,7 @@ class m181018_100914_projects extends Migration {
     /**
      * {@inheritdoc}
      */
-    public function safeDown() {
+    public function safeDown () {
         $this->dropTable('{{%projects}}');
 
         return false;

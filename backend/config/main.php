@@ -10,7 +10,7 @@ return [
     'id' => 'app-backend',
     'name' => '百道',
     'basePath' => dirname(__DIR__),
-    'defaultRoute' => 'country',
+    // 'defaultRoute' => 'country',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],

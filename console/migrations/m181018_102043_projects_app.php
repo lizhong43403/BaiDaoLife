@@ -9,9 +9,9 @@ class m181018_102043_projects_app extends Migration {
     /**
      * 项目应用表
      */
-    public function safeUp() {
+    public function safeUp () {
         $tableOptions = null;
-        if($this->db->driverName === 'mysql') {
+        if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
@@ -22,7 +22,8 @@ class m181018_102043_projects_app extends Migration {
             'name' => $this->string(64)->unique()->notNull()->comment('应用名称'),
             'type' => $this->string()->notNull()->defaultValue('web')->comment('应用类型web'),
             'description' => $this->string()->defaultValue('')->comment('应用描述'),
-            'version' => $this->string()->defaultValue('')->comment('当前版本'),
+            // 'theme' => $this->string(20)->notNull()->defaultValue('default')->comment('主题UI名称'),
+            // 'version' => $this->string()->defaultValue('')->comment('当前版本'),
             // fixme: 版本状态在版本管理部分设计完成后添加 2018/10/18 19:11记录
             // 'version_state' => $this->tinyInteger()->notNull()->defaultValue(-1)->comment('版本状态-1待开发、0停用、1dev、2审核、3发布'),
             'created_at' => $this->integer()->notNull()->comment('添加时间'),
@@ -32,12 +33,13 @@ class m181018_102043_projects_app extends Migration {
         $this->addCommentOnTable('{{%projects}}', '项目应用表');
 
         $this->insert('{{%projects_app}}', ['project_id' => 1, 'name' => '百道后台', 'type' => 'web', 'description' => '不一样的生活方式', 'created_at' => time()]);
+        $this->update('{{%projects}}', ['app_number' => 1], 'id = 1');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function safeDown() {
+    public function safeDown () {
         $this->dropTable('{{%projects_app}}');
 
         return false;

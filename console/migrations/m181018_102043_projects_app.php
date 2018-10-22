@@ -30,7 +30,7 @@ class m181018_102043_projects_app extends Migration {
             'updated_at' => $this->integer()->notNull()->defaultValue(0)->comment('更新时间'),
         ], $tableOptions);
 
-        $this->addCommentOnTable('{{%projects}}', '项目应用表');
+        $this->addCommentOnTable('{{%projects_app}}', '项目应用表');
 
         $this->insert('{{%projects_app}}', ['project_id' => 1, 'name' => '百道后台', 'type' => 'web', 'description' => '不一样的生活方式', 'created_at' => time()]);
         $this->update('{{%projects}}', ['app_number' => 1], 'id = 1');

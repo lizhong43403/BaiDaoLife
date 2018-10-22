@@ -5,11 +5,13 @@ use yii\db\Migration;
 /**
  * Class m181021_052246_project_menu
  */
-class m181021_052246_project_app_catalog extends Migration {
+class m181021_052246_project_app_catalog extends Migration
+{
     /**
      * 安全更新项目目录菜单管理
      */
-    public function safeUp () {
+    public function safeUp()
+    {
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
@@ -18,8 +20,7 @@ class m181021_052246_project_app_catalog extends Migration {
 
         $this->createTable('{{%projects_app_catalog}}', [
             'id' => $this->primaryKey()->comment('权限管理ID'),
-            'project_id' => $this->integer()->notNull()->comment('项目ID'),
-            'app_id' => $this->integer()->notNull()->comment('项目ID'),
+            'app_id' => $this->integer()->notNull()->comment('项目应用ID'),
             'pid' => $this->integer()->notNull()->comment('父级菜单ID'),
             'path' => $this->string(255)->notNull()->comment('菜单路径'),
             'description' => $this->string()->notNull()->defaultValue('')->comment('菜单描述'),
@@ -34,15 +35,16 @@ class m181021_052246_project_app_catalog extends Migration {
 
         $this->addCommentOnTable('{{%projects_app_catalog}}', '项目目录菜单表');
 
-        $this->batchInsert('{{%projects_app_catalog}}', ['project_id', 'app_id', 'pid', 'path', 'description', 'level', 'icon_path', 'sorted', 'created_at'], [
-            [1, 1, 1, '?r=site/index', '首页']
+        $this->batchInsert('{{%projects_app_catalog}}', ['app_id', 'pid', 'path', 'description', 'level', 'icon_path', 'sorted', 'created_at'], [
+            [1, 1, '?r=site/index', '首页', 1, '', 1, time()]
         ]);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function safeDown () {
+    public function safeDown()
+    {
         $this->dropTable('{{%projects_app_catalog}}');
 
         return false;

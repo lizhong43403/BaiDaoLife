@@ -5,13 +5,15 @@ use yii\db\Migration;
 /**
  * Class m181017_151945_country_district
  */
-class m181017_151945_country_district_cn extends Migration {
+class m181017_151945_country_district_cn extends Migration
+{
     /**
      * 国家城市区划表
      */
-    public function safeUp() {
+    public function safeUp()
+    {
         $tableOptions = null;
-        if($this->db->driverName === 'mysql') {
+        if ($this->db->driverName === 'mysql') {
             // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
@@ -29,12 +31,14 @@ class m181017_151945_country_district_cn extends Migration {
         ], $tableOptions);
 
         $this->addCommentOnTable('{{%country_district_cn}}', '中国行政区划信息表');
+        $this->createIndex('idx_pid', '{{%country_district_cn}}', ['name']);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function safeDown() {
+    public function safeDown()
+    {
         $this->dropTable('{{%country_district_cn}}');
 
         return false;

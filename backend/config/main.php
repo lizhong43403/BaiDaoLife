@@ -10,10 +10,14 @@ return [
     'id' => 'app-backend',
     'name' => '百道',
     'basePath' => dirname(__DIR__),
-     'defaultRoute' => 'projects',
+    'defaultRoute' => 'projects',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'projects' => [
+            'class' => 'backend\projects\Projects',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -47,6 +51,11 @@ return [
             ],
         ],
         */
+        // 'formatter' => [
+        //     'defaultTimeZone' => 'Asia/Shanghai',
+        //     'dateFormat' => 'yyyy-MM-dd',
+        //     'datetime' => 'yyyy:MM:dd HH:mm:ss'
+        // ]
     ],
     'params' => $params,
 ];

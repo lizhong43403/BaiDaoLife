@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use yii\db\Exception;
 
 /**
  * This is the model class for table "{{%projects_app}}".
@@ -12,6 +13,7 @@ use Yii;
  * @property string $name 应用名称
  * @property string $type 应用类型web
  * @property string $description 应用描述
+ * @property int $uid 创建者
  * @property int $created_at 添加时间
  * @property int $updated_at 更新时间
  */
@@ -31,8 +33,8 @@ class ProjectsApp extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['project_id', 'name', 'created_at'], 'required'],
-            [['project_id', 'created_at', 'updated_at'], 'integer'],
+            [['project_id', 'name'], 'required'],
+            [['project_id', 'uid', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 64],
             [['type', 'description'], 'string', 'max' => 255],
             [['name'], 'unique'],
@@ -50,6 +52,7 @@ class ProjectsApp extends \yii\db\ActiveRecord
             'name' => '应用名称',
             'type' => '应用类型',
             'description' => '应用描述',
+            'uid' => '创建者',
             'created_at' => '添加时间',
             'updated_at' => '更新时间',
         ];
@@ -73,5 +76,19 @@ class ProjectsApp extends \yii\db\ActiveRecord
         }
 
         return parent::beforeSave($insert);
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        if ($insert == self::EVENT_BEFORE_INSERT) {
+            $projectId = Yii::$app->request->getQueryParam('_id');
+            $projectModel = Projects::findOne(['id' => $projectId]);
+            if ($projectModel->updateAttributes(['app_number' => $projectModel->app_number + 1])) {
+                // TODO: 制定错误码 项目应用数更新失败
+                throw new Exception('项目应用数新增失败');
+            }
+        }
     }
 }

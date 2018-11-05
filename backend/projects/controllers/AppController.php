@@ -2,12 +2,12 @@
 
 namespace backend\projects\controllers;
 
-use Yii;
 use backend\models\ProjectsApp;
 use backend\models\ProjectsAppSearch;
+use Yii;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ProjectAppController implements the CRUD actions for ProjectsApp model.

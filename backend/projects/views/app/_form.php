@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'project_id')->textInput(['value' => Yii::$app->request->getQueryParam('_id'), 'readonly' => 'readonly']) ?>
+
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'type')->dropDownList([0 => 'web']) ?>

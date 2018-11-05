@@ -38,7 +38,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => Yii::$app->request->getQueryParam('_id') == 1 ? '{view} {update}' : '{view} {update} {delete}',
+                'buttons' => [
+                    'update' => function ($url, $model, $key) {
+                        $options = ['title' => Yii::t('yii', 'Update'), 'aria-label' => 'Update', 'data-pjax' => '0'];
+                        $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-pencil"]);
+                        $_id = Yii::$app->request->getQueryParam('_id');
+                        return Html::a($icon, ['update', 'id' => $model->id, '_id' => $_id], $options);
+                    }
+                ]],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

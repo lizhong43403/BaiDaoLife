@@ -2,17 +2,17 @@
 
 namespace backend\projects\controllers;
 
-use backend\models\Projects;
-use backend\models\ProjectsSearch;
 use Yii;
-use yii\filters\VerbFilter;
+use backend\models\ProjectsApp;
+use backend\models\ProjectsAppSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * IndexController implements the CRUD actions for Projects model.
+ * ProjectAppController implements the CRUD actions for ProjectsApp model.
  */
-class IndexController extends Controller
+class AppController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class IndexController extends Controller
     }
 
     /**
-     * Lists all Projects models.
+     * Lists all ProjectsApp models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ProjectsSearch();
+        $searchModel = new ProjectsAppSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class IndexController extends Controller
     }
 
     /**
-     * Displays a single Projects model.
+     * Displays a single ProjectsApp model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class IndexController extends Controller
     }
 
     /**
-     * Creates a new Projects model.
+     * Creates a new ProjectsApp model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Projects();
+        $model = new ProjectsApp();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class IndexController extends Controller
     }
 
     /**
-     * Updates an existing Projects model.
+     * Updates an existing ProjectsApp model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,15 +96,29 @@ class IndexController extends Controller
     }
 
     /**
-     * Finds the Projects model based on its primary key value.
+     * Deletes an existing ProjectsApp model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the ProjectsApp model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Projects the loaded model
+     * @return ProjectsApp the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Projects::findOne($id)) !== null) {
+        if (($model = ProjectsApp::findOne($id)) !== null) {
             return $model;
         }
 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\ProjectSearch */
+/* @var $searchModel backend\models\ProjectsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = '项目管理';
@@ -28,7 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            ['attribute' => 'name', 'format' => 'html', 'value' => function ($model) {
+                // fixme: 是否跳到新的页面
+                return Html::a($model->name, ['/projects/app', '_id' => $model->id]);
+            }],
             'description',
             'app_number',
             ['attribute' => 'status', 'value' => function ($model) {

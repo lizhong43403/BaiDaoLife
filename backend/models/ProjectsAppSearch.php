@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Projects;
+use backend\models\ProjectsApp;
 
 /**
- * ProjectSearch represents the model behind the search form of `backend\models\Projects`.
+ * ProjectAppSearch represents the model behind the search form of `backend\models\ProjectsApp`.
  */
-class ProjectSearch extends Projects
+class ProjectsAppSearch extends ProjectsApp
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ProjectSearch extends Projects
     public function rules()
     {
         return [
-            [['id', 'app_number', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'description', 'status'], 'safe'],
+            [['id', 'project_id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'type', 'description'], 'safe'],
         ];
     }
 
@@ -41,9 +41,10 @@ class ProjectSearch extends Projects
      */
     public function search($params)
     {
-        $query = Projects::find();
+        $query = ProjectsApp::find();
 
         // add conditions that should always apply here
+        $query->where(['project_id' => $params['_id']]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -60,14 +61,14 @@ class ProjectSearch extends Projects
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'app_number' => $this->app_number,
-            // 'created_at' => $this->created_at,
-            // 'updated_at' => $this->updated_at,
+            'project_id' => $this->project_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'type', $this->type])
+            ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
     }

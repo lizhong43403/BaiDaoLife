@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 return date('Y-m-d H:i:s', $model->created_at);
             }],
             ['attribute' => 'updated_at', 'value' => function ($model) {
-                return date('Y-m-d H:i:s', $model->updated_at);
+                return $model->updated_at > 0 ? date('Y-m-d H:i:s', $model->updated_at) : '';
             }],
         ],
     ]) ?>

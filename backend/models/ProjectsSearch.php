@@ -18,7 +18,7 @@ class ProjectsSearch extends Projects
     public function rules()
     {
         return [
-            [['id', 'app_number', 'uid', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'app_number', 'ascription_type', 'uid', 'created_at', 'updated_at'], 'integer'],
             [['name', 'description', 'status'], 'safe'],
         ];
     }

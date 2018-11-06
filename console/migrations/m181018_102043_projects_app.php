@@ -28,6 +28,7 @@ class m181018_102043_projects_app extends Migration
             // 'version' => $this->string()->defaultValue('')->comment('当前版本'),
             // fixme: 版本状态在版本管理部分设计完成后添加 2018/10/18 19:11记录
             // 'version_state' => $this->tinyInteger()->notNull()->defaultValue(-1)->comment('版本状态-1待开发、0停用、1dev、2审核、3发布'),
+            // 'is_private' => $this->tinyInteger()->notNull()->defaultValue(1)->comment('是否私有 0否、1是'),
             'uid' => $this->integer()->notNull()->defaultValue(1)->comment('创建者'),
             'created_at' => $this->integer()->notNull()->comment('添加时间'),
             'updated_at' => $this->integer()->notNull()->defaultValue(0)->comment('更新时间'),

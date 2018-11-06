@@ -85,7 +85,7 @@ class ProjectsApp extends \yii\db\ActiveRecord
         if ($insert == self::EVENT_BEFORE_INSERT) {
             $projectId = Yii::$app->request->getQueryParam('_id');
             $projectModel = Projects::findOne(['id' => $projectId]);
-            if ($projectModel->updateAttributes(['app_number' => $projectModel->app_number + 1])) {
+            if (!$projectModel->updateAttributes(['app_number' => $projectModel->app_number + 1])) {
                 // TODO: 制定错误码 项目应用数更新失败
                 throw new Exception('项目应用数新增失败');
             }

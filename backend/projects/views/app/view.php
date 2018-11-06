@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model backend\models\ProjectsApp */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index', '_id' => Yii::$app->request->getQueryParam('_id')]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projects-app-view">

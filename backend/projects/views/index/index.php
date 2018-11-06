@@ -28,6 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            // ['attribute' => 'ascription_type', 'value' => function ($model) {
+            //     $keys = [1 => '个人', '组织', '企业'];
+            //     return $keys[$model->ascription_type] ?: '异常';
+            // }],
             ['attribute' => 'name', 'format' => 'html', 'value' => function ($model) {
                 // fixme: 是否跳到新的页面
                 return Html::a($model->name, ['/projects/app', '_id' => $model->id]);

@@ -8,6 +8,7 @@ namespace backend\models;
  * @property int $id 项目ID
  * @property string $name 项目名称
  * @property string $description 项目描述
+ * @property int $ascription_type 项目归属 1个人/2团队/3企业
  * @property int $app_number 项目下应用数
  * @property int $status 项目状态 1使用/0停用/-1封号/-2删除
  * @property int $uid 创建者
@@ -31,7 +32,7 @@ class Projects extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['app_number', 'uid', 'created_at', 'updated_at'], 'integer'],
+            [['app_number', 'uid', 'ascription_type', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 64],
             [['description'], 'string', 'max' => 255],
             [['status'], 'string', 'max' => 3],
@@ -48,6 +49,7 @@ class Projects extends \yii\db\ActiveRecord
             'id' => '项目ID',
             'name' => '项目名称',
             'description' => '项目描述',
+            'ascription_type' => '归属类型',
             'app_number' => '项目下应用数',
             'status' => '项目状态',
             'uid' => '创建者',

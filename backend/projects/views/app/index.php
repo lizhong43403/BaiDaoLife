@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             // 'project_id',
             'name',
             ['attribute' => 'type', 'value' => function ($model) {
@@ -38,14 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_at',
             //'updated_at',
 
-            ['class' => 'yii\grid\ActionColumn',
-                'template' => Yii::$app->request->getQueryParam('_id') == 1 ? '{view} {update}' : '{view} {update} {delete}',
+            ['class' => 'yii\grid\ActionColumn', 'template' => Yii::$app->request->getQueryParam('_id') == 1 ? '{view} {update}' : '{view} {update} {delete}',
                 'buttons' => [
                     'update' => function ($url, $model, $key) {
                         $options = ['title' => Yii::t('yii', 'Update'), 'aria-label' => 'Update', 'data-pjax' => '0'];
                         $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-pencil"]);
                         $_id = Yii::$app->request->getQueryParam('_id');
                         return Html::a($icon, ['update', 'id' => $model->id, '_id' => $_id], $options);
+                    },
+                    'view' => function ($url, $model, $key) {
+                        $options = ['title' => Yii::t('yii', 'View'), 'aria-label' => 'View', 'data-pjax' => '0'];
+                        $icon = Html::tag('span', '', ['class' => "glyphicon glyphicon-eye-open"]);
+                        $_id = Yii::$app->request->getQueryParam('_id');
+                        return Html::a($icon, ['view', 'id' => $model->id, '_id' => $_id], $options);
                     }
                 ]],
         ],

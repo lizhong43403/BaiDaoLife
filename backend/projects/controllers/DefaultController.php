@@ -15,6 +15,10 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
+        if (\Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         return $this->render('index');
     }
 }

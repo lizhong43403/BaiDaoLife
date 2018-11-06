@@ -22,7 +22,7 @@ class m181018_100914_projects extends Migration
             'id' => $this->primaryKey()->comment('项目ID'),
             'name' => $this->string(64)->unique()->notNull()->comment('项目名称'),
             'description' => $this->string()->defaultValue('')->comment('项目描述'),
-            // 'role_type' => $this->tinyInteger()->defaultValue(1)->comment('用户角色类型 1个人/2团队/3公司'),
+            'ascription_type' => $this->tinyInteger()->defaultValue(1)->comment('项目归属类型 1个人/2团队/3企业'),
             'app_number' => $this->smallInteger()->defaultValue(0)->comment('项目下应用数'),
             'status' => $this->tinyInteger()->notNull()->defaultValue(1)->comment('项目状态 1使用/0停用/-1封号/-2删除'),
             'uid' => $this->integer()->notNull()->defaultValue(1)->comment('应用创建者'),

@@ -35,6 +35,10 @@ class IndexController extends Controller
      */
     public function actionIndex()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $searchModel = new ProjectsSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +56,10 @@ class IndexController extends Controller
      */
     public function actionView($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -64,6 +72,10 @@ class IndexController extends Controller
      */
     public function actionCreate()
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = new Projects();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +96,10 @@ class IndexController extends Controller
      */
     public function actionUpdate($id)
     {
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

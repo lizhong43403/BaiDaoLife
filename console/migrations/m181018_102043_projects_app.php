@@ -22,7 +22,7 @@ class m181018_102043_projects_app extends Migration
             'id' => $this->primaryKey()->comment('应用ID'),
             'project_id' => $this->integer()->notNull()->comment('项目ID'),
             'name' => $this->string(64)->unique()->notNull()->comment('应用名称'),
-            'type' => $this->string()->notNull()->defaultValue('web')->comment('应用类型web'),
+            'type' => $this->integer()->notNull()->defaultValue(0)->comment('应用类型 0web'),
             'description' => $this->string()->defaultValue('')->comment('应用描述'),
             // 'theme' => $this->string(20)->notNull()->defaultValue('default')->comment('主题UI名称'),
             // 'version' => $this->string()->defaultValue('')->comment('当前版本'),

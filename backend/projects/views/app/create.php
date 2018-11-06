@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model backend\models\ProjectsApp */
 
 $this->title = '创建项目下的应用';
-$this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index', '_id' => Yii::$app->request->getQueryParam('_id')]];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="projects-app-create">

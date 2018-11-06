@@ -44,7 +44,7 @@ class ProjectsAppSearch extends ProjectsApp
         $query = ProjectsApp::find();
 
         // add conditions that should always apply here
-        $query->where(['project_id' => $params['_id']]);
+        $query->where(['uid' => Yii::$app->user->getId(), 'project_id' => $params['_id']]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

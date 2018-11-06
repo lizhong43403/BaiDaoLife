@@ -5,7 +5,6 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Projects;
 
 /**
  * ProjectSearch represents the model behind the search form of `backend\models\Projects`.
@@ -44,6 +43,7 @@ class ProjectsSearch extends Projects
         $query = Projects::find();
 
         // add conditions that should always apply here
+        $query->where(['uid' => Yii::$app->user->getId()]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

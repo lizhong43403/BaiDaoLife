@@ -79,7 +79,7 @@ class AppController extends Controller
         $model = new ProjectsApp();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, '_id' => $model->project_id]);
         }
 
         return $this->render('create', [
@@ -103,7 +103,7 @@ class AppController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'id' => $model->id, '_id' => $model->project_id]);
         }
 
         return $this->render('update', [
@@ -124,9 +124,10 @@ class AppController extends Controller
             return $this->goHome();
         }
 
-        $this->findModel($id)->delete();
+        $projectsAppModel = $this->findModel($id);
+        $projectsAppModel->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['index', '_id' => $projectsAppModel->project_id]);
     }
 
     /**

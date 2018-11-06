@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Class m181021_160057_users_app_auth
+ * Class m181021_160057_user_app_auth
  */
 class m181021_160057_user_role extends Migration
 {
@@ -27,8 +27,6 @@ class m181021_160057_user_role extends Migration
         ], $tableOptions);
 
         $this->addCommentOnTable('{{%user_role}}', '用户角色表');
-
-        $this->insert('{{%user_role}}', []);
     }
 
     /**

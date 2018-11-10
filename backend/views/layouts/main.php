@@ -37,7 +37,6 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => '项目管理', 'url' => ['/projects']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];

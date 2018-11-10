@@ -11,6 +11,7 @@ return [
     'name' => '百道',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language' => 'zh',
     'bootstrap' => ['log'],
     'modules' => [
         'projects' => [

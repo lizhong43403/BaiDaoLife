@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'description')->textarea(['maxlength' => true]) ?>
 
     <?php if ($model->id > 1) {
         $statusItems = [0 => '停用', 1 => '使用'];

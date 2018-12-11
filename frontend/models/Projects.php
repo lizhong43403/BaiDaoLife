@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\models;
+namespace frontend\models;
 
 /**
  * This is the model class for table "{{%projects}}".

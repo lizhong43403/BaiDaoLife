@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\ProjectsSearch */
+/* @var $searchModel frontend\models\ProjectsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = '项目管理';
@@ -27,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             // ['attribute' => 'ascription_type', 'value' => function ($model) {
             //     $keys = [1 => '个人', '组织', '企业'];
             //     return $keys[$model->ascription_type] ?: '异常';
@@ -42,12 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 $keys = [-2 => '删除', -1 => '封号', 0 => '停用', 1 => '使用'];
                 return $keys[$model->status];
             }],
-            // ['attribute' => 'created_at', 'value' => function ($model) {
-            //     return date('Y-m-d H:i:s', $model->created_at);
-            // }],
-            //'updated_at',
-
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>

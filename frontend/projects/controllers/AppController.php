@@ -1,9 +1,9 @@
 <?php
 
-namespace backend\projects\controllers;
+namespace frontend\projects\controllers;
 
-use backend\models\ProjectsApp;
-use backend\models\ProjectsAppSearch;
+use frontend\models\ProjectsApp;
+use frontend\models\ProjectsAppSearch;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\Controller;

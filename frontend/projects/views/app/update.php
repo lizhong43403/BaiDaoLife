@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\ProjectsApp */
+/* @var $model frontend\models\ProjectsApp */
 
 $this->title = '更新应用';
 $this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index', '_id' => Yii::$app->request->getQueryParam('_id')]];

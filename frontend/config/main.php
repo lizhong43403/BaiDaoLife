@@ -13,6 +13,11 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'language' => 'zh',
+    'modules' => [
+        'projects' => [
+            'class' => 'frontend\projects\Projects',
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

@@ -13,11 +13,6 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'language' => 'zh',
     'bootstrap' => ['log'],
-    'modules' => [
-        'projects' => [
-            'class' => 'backend\projects\Projects',
-        ],
-    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',

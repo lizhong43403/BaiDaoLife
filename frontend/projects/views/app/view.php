@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\ProjectsApp */
+/* @var $model frontend\models\ProjectsApp */
 
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => '项目应用', 'url' => ['index', '_id' => Yii::$app->request->getQueryParam('_id')]];
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             ['attribute' => 'project_id', 'value' => function ($model) {
-                return \backend\models\Projects::findOne(['id' => $model->project_id])->getAttribute('name');
+                return \frontend\models\Projects::findOne(['id' => $model->project_id])->getAttribute('name');
             }],
             'name',
             ['attribute' => 'type', 'value' => function ($model) {

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\ProjectsAppSearch */
+/* @var $searchModel frontend\models\ProjectsAppSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = '项目应用';

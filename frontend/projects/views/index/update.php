@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Projects */
+/* @var $model frontend\models\Projects */
 
 $this->title = '更新信息';
 $this->params['breadcrumbs'][] = ['label' => '项目管理', 'url' => ['index']];
